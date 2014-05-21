@@ -1,15 +1,27 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.IO.Ports;
 
 public class Serial : MonoBehaviour {
 
 	public bool arduinoOn = true;
+
+	// Brush tip facing, left: y = 0-180, right: y = 180-360
+	// Brush hairs facing you, when tip on left: z=0, when tip on right z=180
+	public Vector3 angles;
+
+	public float brushing = 0;
+	public float brushingAcc = 0;
+	public float brushingStrength = 0;
+	public float[] brushingStrengthValues;
+	public int brushingStrengthIndex = 0;
 	public static string strIn;
 	public static string message;
-	SerialPort sp = new SerialPort("/dev/tty.usbmodem1421", 115200);
+	SerialPort sp = new SerialPort("/dev/tty.usbmodem3321", 115200);
 
 	void Start () {
+		brushingStrengthValues = new float[5];
 		if (arduinoOn) {
 			OpenConnection();
 		}
@@ -26,14 +38,19 @@ public class Serial : MonoBehaviour {
 			if (sp.IsOpen) {
 				sp.ReadTimeout = 1000;
 				strIn = sp.ReadLine();
-				//print("read:" + strIn);
 				string[] values = strIn.Split('|');
-				float y = -float.Parse(values[0]);
-				float z = -float.Parse(values[1]);
-				float x = float.Parse(values[2]);
-				float w = -float.Parse(values[3]);
-				float brushing = float.Parse(values[4]);
-				float brushingAcc = float.Parse(values[5]);
+				float qy = -float.Parse(values[0]);
+				float qz = -float.Parse(values[1]);
+				float qx = float.Parse(values[2]);
+				float qw = -float.Parse(values[3]);
+				brushing = float.Parse(values[4]);
+				brushingAcc = float.Parse(values[5]);
+
+				if (++brushingStrengthIndex > 4) brushingStrengthIndex = 0;
+				brushingStrengthValues[brushingStrengthIndex] = Math.Abs(brushingAcc);
+				brushingStrength = 0;
+				foreach (int i in brushingStrengthValues) brushingStrength += i;
+				brushingStrength /= 5;
 
 				if (brushing > 0) {
 					transform.position = new Vector3(0, 0, 0);
@@ -43,7 +60,8 @@ public class Serial : MonoBehaviour {
 					transform.position = new Vector3(0, 0, 0);
 					renderer.material.color = new Color(1, 1, 1);
 				}
-				transform.rotation = new Quaternion(x, y, z, w);
+				transform.rotation = new Quaternion(qx, qy, qz, qw);
+				angles = transform.rotation.eulerAngles;
 				//print("pos:" + transform.position.ToString() + " localpos:" + transform.localPosition.ToString() + " forward:" + transform.forward);
 			}
 		}
