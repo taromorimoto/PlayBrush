@@ -1,11 +1,9 @@
-#include <FreeSixIMU.h>
-#include <FIMU_ADXL345.h>
-#include <FIMU_ITG3200.h>
-
+#include <SPI.h>
 #include <Wire.h>
 #include <SensorDataFilter.h>
+#include <DOFHelper.h>
 
-#include "CommunicationUtils.h"
+//#include "CommunicationUtils.h"
 
 float angles[3]; // yaw pitch roll
 float q[4]; //hold q values
@@ -18,40 +16,27 @@ SensorDataFilter* d0 = new SensorDataFilter(5);
 SensorDataFilter* d1 = new SensorDataFilter(5);
 SensorDataFilter* d2 = new SensorDataFilter(5);
 
-// Set the FreeSixIMU object
-FreeSixIMU sixDOF = FreeSixIMU();
+DOFHelper* dof;
 
 void setup() { 
   Serial.begin(115200);
-  //Serial.begin(9600);
-  Wire.begin();
+  //Serial.begin(38400);
   
-  delay(5);
-  sixDOF.init(); //begin the IMU
-  delay(5);
+  //Wire.begin();
+  
+  dof = new DOFHelper();
 }
 
 void loop() { 
-
-  /*  
-  sixDOF.getEuler(angles);
-  Serial.print(angles[0]);
-  Serial.print("|");  
-  Serial.print(angles[1]);
+  dof->update();
+  
+  Serial.print(dof->q[0]);
   Serial.print("|");
-  Serial.print(angles[2]);
+  Serial.print(dof->q[1]);
   Serial.print("|");
-  */
-
-  sixDOF.getQ(q);
-  //serialPrintFloatArr(q, 4);
-  Serial.print(q[0], 6);
+  Serial.print(dof->q[2]);
   Serial.print("|");
-  Serial.print(q[1], 6);
-  Serial.print("|");
-  Serial.print(q[2], 6);
-  Serial.print("|");
-  Serial.print(q[3], 6);
+  Serial.print(dof->q[3]);
   Serial.print("|");
 
   checkBrushing();
@@ -60,18 +45,24 @@ void loop() {
   Serial.print(brushingAcc);
   Serial.print("|");
 
+  Serial.print(dof->yaw);
+  Serial.print("|");
+  Serial.print(dof->pitch);
+  Serial.print("|");
+  Serial.print(dof->roll);
+  Serial.print("|");  
+  
   Serial.println(""); //line break
+  
+  //dof->printValues();
 
-  delay(60); 
+  delay(50); 
 }
 
 void checkBrushing() {
-  int accval[3];
-  sixDOF.acc.readAccel(&accval[0], &accval[1], &accval[2]);
-
-  d0->add(accval[0]);
-  d1->add(accval[1]);
-  d2->add(accval[2]);
+  d0->add(dof->ax*10);
+  d1->add(dof->ay*10);
+  d2->add(dof->az*10);
 
   int v0 = d0->getVariation();
   int v1 = d1->getVariation();
@@ -79,17 +70,17 @@ void checkBrushing() {
 
   brushing = threshold;
 
-  if (v0 > brushing) {
-    brushing = v0;
+  if (v1 > brushing) {
+    brushing = v1;
   }
   if (v2 > brushing) {
     brushing = v2;
   }
-  if (v1 > brushing) {
+  if (v0 > brushing) {
     // Brush stroke is most perpendicular to the brush, compared to other directions and threshold.
-    brushing = v1;
+    brushing = v0;
   } else {
     brushing = 0;
   }
-  brushingAcc = accval[1];
+  brushingAcc = dof->ax*10;
 }
