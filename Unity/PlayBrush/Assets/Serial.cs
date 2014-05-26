@@ -18,7 +18,10 @@ public class Serial : MonoBehaviour {
 	public int brushingStrengthIndex = 0;
 	public static string strIn;
 	public static string message;
+
+	//SerialPort sp = new SerialPort("/dev/tty.usbmodem1411", 115200);
 	SerialPort sp = new SerialPort("/dev/tty.usbmodem33421", 115200);
+	//SerialPort sp = new SerialPort("/dev/tty.PlayBrush-SPP", 115200);
 
 	void Start () {
 		brushingStrengthValues = new float[5];
@@ -40,15 +43,31 @@ public class Serial : MonoBehaviour {
 				strIn = sp.ReadLine();
 				print("strIn:" + strIn);
 				string[] values = strIn.Split('|');
+
+				/*				
 				float qw = float.Parse(values[0]);
 				float qx = float.Parse(values[1]);
 				float qy = float.Parse(values[2]);
 				float qz = float.Parse(values[3]);
+				*/
+
+				float qw = float.Parse(values[0]);
+				float qx = -float.Parse(values[1]);
+				float qz = -float.Parse(values[2]);
+				float qy = -float.Parse(values[3]);
+
+				/*
+				float qy = float.Parse(values[0]);	
+				float qz = float.Parse(values[1]);
+				float qx = -float.Parse(values[2]);
+				float qw = -float.Parse(values[3]);				
+				*/
+
 				brushing = float.Parse(values[4]);
 				brushingAcc = float.Parse(values[5]);
-				float yaw = float.Parse(values[6]);
-				float pitch = float.Parse(values[7]);
-				float roll = float.Parse(values[8]);
+				//float yaw = float.Parse(values[6]);
+				//float pitch = float.Parse(values[7]);
+				//float roll = float.Parse(values[8]);
 
 				if (++brushingStrengthIndex > 4) brushingStrengthIndex = 0;
 				brushingStrengthValues[brushingStrengthIndex] = Math.Abs(brushingAcc);
@@ -65,8 +84,9 @@ public class Serial : MonoBehaviour {
 					renderer.material.color = new Color(1, 1, 1);
 				}
 				transform.rotation = new Quaternion(qx, qy, qz, qw);
+				//transform.rotation = Quaternion.AngleAxis(180, transform.forward);
 				angles = transform.rotation.eulerAngles;
-				print("angles:" + transform.rotation.ToString() + " euler: " + angles + " yaw: " + yaw + " pitch: " + pitch + " roll: " + roll);
+				//print("angles:" + transform.rotation.ToString() + " euler: " + angles + " yaw: " + yaw + " pitch: " + pitch + " roll: " + roll);
 				//print("pos:" + transform.position.ToString() + " localpos:" + transform.localPosition.ToString() + " forward:" + transform.forward);
 			}
 		}

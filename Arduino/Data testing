@@ -1,0 +1,161 @@
+
+Data from Teensy 3.1 and LSM9DS0 when y facing me, x facing left.
+
+ax: -100.46 ay: -12.57 az: 977.36 mg
+gx: -1.48 gy: 3.26 gz: -6.32 deg/s
+mx: -137.33 my: 6.65 mz: 357.42 mG
+Yaw, Pitch, Roll: 4.25, 2.96, 3.63
+ 
+ax: -98.02 ay: -14.71 az: 979.31 mg
+gx: -1.98 gy: 3.39 gz: -6.24 deg/s
+mx: -134.46 my: 5.49 mz: 360.35 mG
+Yaw, Pitch, Roll: 4.26, 3.48, 3.65
+ 
+ax: -98.82 ay: -12.76 az: 976.99 mg
+gx: -1.64 gy: 3.59 gz: -6.47 deg/s
+mx: -135.93 my: 5.68 mz: 352.60 mG
+Yaw, Pitch, Roll: 4.26, 3.94, 3.61
+ 
+ax: -95.58 ay: -12.76 az: 973.69 mg
+gx: -1.67 gy: 3.62 gz: -6.45 deg/s
+mx: -134.40 my: 4.52 mz: 374.69 mG
+Yaw, Pitch, Roll: 4.26, 4.48, 3.56
+ 
+ax: -100.22 ay: -12.82 az: 980.59 mg
+gx: -1.49 gy: 3.19 gz: -6.39 deg/s
+mx: -132.57 my: 6.23 mz: 349.55 mG
+Yaw, Pitch, Roll: 4.30, 5.03, 3.52
+ 
+ax: -98.75 ay: -13.92 az: 975.71 mg
+gx: -2.03 gy: 3.74 gz: -6.73 deg/s
+mx: -132.81 my: 6.65 mz: 377.50 mG
+Yaw, Pitch, Roll: 4.60, 0.95, 4.87
+
+-----------------
+
+ax: -72.08 ay: -5.31 az: 973.08 mg
+gx: -1.76 gy: 3.16 gz: -6.30 deg/s
+mx: -131.47 my: 33.39 mz: 355.22 mG
+dof.mx: -2154 dof.my: 547 dof.mz: 5820 mG
+Yaw, Pitch, Roll: -7.47, 2.79, -5.70
+ 
+ax: -73.06 ay: -5.74 az: 974.30 mg
+gx: -1.64 gy: 3.46 gz: -5.62 deg/s
+mx: -129.94 my: 32.71 mz: 357.60 mG
+dof.mx: -2129 dof.my: 536 dof.mz: 5859 mG
+Yaw, Pitch, Roll: -7.61, 4.05, -5.34
+ 
+ax: -75.44 ay: -8.00 az: 977.11 mg
+gx: -1.34 gy: 3.65 gz: -5.72 deg/s
+mx: -128.23 my: 32.59 mz: 352.91 mG
+dof.mx: -2101 dof.my: 534 dof.mz: 5782 mG
+Yaw, Pitch, Roll: -7.18, 1.01, -6.98
+ 
+ax: -73.61 ay: -8.12 az: 974.12 mg
+gx: -1.36 gy: 3.53 gz: -5.70 deg/s
+mx: -127.69 my: 31.68 mz: 355.59 mG
+dof.mx: -2092 dof.my: 519 dof.mz: 5826 mG
+Yaw, Pitch, Roll: -7.37, 2.29, -6.76
+ 
+ax: -75.13 ay: -7.57 az: 974.43 mg
+gx: -1.32 gy: 3.39 gz: -3.93 deg/s
+mx: -130.55 my: 32.78 mz: 351.93 mG
+dof.mx: -2139 dof.my: 537 dof.mz: 5766 mG
+Yaw, Pitch, Roll: -7.52, 3.56, -6.46
+
+
+
+Data from Uno and LSM9DS0 when y facing me, x facing left:
+
+ax: -107.06 ay: 30.03 az: 968.99 mg
+gx: -1.47 gy: 2.45 gz: -5.78 deg/s
+mx: -242.49 my: -338.07 mz: 381.23 mG
+Yaw, Pitch, Roll: 86.44, 7.57, 1.85
+ 
+ax: -102.72 ay: 29.36 az: 972.66 mg
+gx: -1.22 gy: 3.59 gz: -6.21 deg/s
+mx: -238.83 my: -338.75 mz: 410.95 mG
+Yaw, Pitch, Roll: 86.41, 7.57, 1.84
+ 
+ax: -106.14 ay: 28.44 az: 971.80 mg
+gx: -1.35 gy: 3.04 gz: -5.43 deg/s
+mx: -241.15 my: -341.55 mz: 417.66 mG
+Yaw, Pitch, Roll: 86.43, 7.57, 1.81
+ 
+ax: -104.19 ay: 29.97 az: 977.84 mg
+gx: -1.10 gy: 3.27 gz: -5.68 deg/s
+mx: -239.75 my: -341.25 mz: 411.13 mG
+Yaw, Pitch, Roll: 86.42, 7.57, 1.82
+ 
+ax: -100.59 ay: 30.52 az: 974.73 mg
+gx: -1.29 gy: 3.07 gz: -5.53 deg/s
+mx: -240.84 my: -340.33 mz: 393.01 mG
+Yaw, Pitch, Roll: 86.42, 7.55, 1.81
+ 
+ax: -104.19 ay: 32.23 az: 977.84 mg
+gx: -1.05 gy: 3.08 gz: -6.03 deg/s
+mx: -241.70 my: -344.12 mz: 411.01 mG
+Yaw, Pitch, Roll: 86.43, 7.51, 1.86
+ 
+ax: -105.65 ay: 30.33 az: 974.37 mg
+gx: -0.78 gy: 3.00 gz: -5.91 deg/s
+mx: -241.27 my: -342.41 mz: 409.48 mG
+Yaw, Pitch, Roll: 86.45, 7.55, 1.85
+
+
+
+----------------
+ax: -80.57 ay: 21.73 az: 975.65 mg
+gx: -1.76 gy: 3.45 gz: -6.19 deg/s
+mx: -243.35 my: -317.99 mz: 454.71 mG
+dof.mx: -3987 dof.my: -5210 dof.mz: 7450 mG
+Yaw, Pitch, Roll: 88.02, 6.19, 1.49
+ 
+ax: -78.37 ay: 22.16 az: 975.89 mg
+gx: -1.41 gy: 4.04 gz: -7.00 deg/s
+mx: -239.44 my: -316.71 mz: 455.08 mG
+dof.mx: -3923 dof.my: -5189 dof.mz: 7456 mG
+Yaw, Pitch, Roll: 87.98, 6.18, 1.52
+ 
+ax: -81.12 ay: 22.34 az: 975.10 mg
+gx: -1.68 gy: 3.87 gz: -7.03 deg/s
+mx: -241.58 my: -317.14 mz: 456.60 mG
+dof.mx: -3958 dof.my: -5196 dof.mz: 7481 mG
+Yaw, Pitch, Roll: 87.95, 6.24, 1.50
+ 
+ax: -79.04 ay: 22.22 az: 971.86 mg
+gx: -1.53 gy: 3.29 gz: -6.57 deg/s
+mx: -241.27 my: -317.26 mz: 455.26 mG
+dof.mx: -3953 dof.my: -5198 dof.mz: 7459 mG
+Yaw, Pitch, Roll: 87.94, 6.18, 1.51
+
+
+
+6DOF Uno:
+-3|16|232|-44|-24|-9|
+-2|17|233|-47|-20|-9|
+-1|16|232|-49|-22|-6|
+-2|16|232|-44|-25|-6|
+-2|17|233|-44|-21|-9|
+-2|17|233|-44|-19|-11|
+-2|17|232|-43|-23|-12|
+-2|16|232|-46|-21|-10|
+-2|16|230|-42|-25|-10|
+-1|16|231|-49|-24|-4|
+-2|16|233|-46|-19|-4|
+-3|17|232|-44|-24|-8|
+-3|17|231|-43|-23|-9|
+-4|16|232|-46|-23|-5|
+-2|16|230|-45|-24|-5|
+-2|18|233|-44|-19|-7|
+
+6DOF Teensy:
+
+
+
+
+
+
+
+
+

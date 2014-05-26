@@ -15,7 +15,7 @@ public class AudioTest : MonoBehaviour {
 		KalimbaPd.Init();
 		
 		//KalimbaPd.OpenFile("kalimbaTest.pd", "pd");
-		KalimbaPd.OpenFile("granular.pd", "pd");
+		//KalimbaPd.OpenFile("granular.pd", "pd");
 	}
 
 	void Update () {
