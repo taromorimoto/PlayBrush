@@ -11,15 +11,18 @@
  */
 #include <SoftwareSerial.h>  
 
-int bluetoothTx = 12;  // TX-O pin of bluetooth mate, Arduino D12
-int bluetoothRx = 13;  // RX-I pin of bluetooth mate, Arduino D13
+//int bluetoothTx = 8;  // TX-O pin of bluetooth mate, Arduino PIN
+//int bluetoothRx = 7;  // RX-I pin of bluetooth mate, Arduino PIN
+int bluetoothTx = 12;  // TX-O pin of bluetooth mate, Arduino PIN
+int bluetoothRx = 13;  // RX-I pin of bluetooth mate, Arduino PIN
 
-SoftwareSerial bluetooth(bluetoothTx, bluetoothRx);
+//SoftwareSerial bluetooth(bluetoothTx, bluetoothRx);
 
 void setup() {
   Serial.begin(9600);  // Begin the serial monitor at 9600bps
-
-  bluetooth.begin(115200);  // The Bluetooth Mate defaults to 115200bps
+  //bluetooth.begin(115200);  // The Bluetooth Mate defaults to 115200bps
+  Serial3.begin(115200);  // The Bluetooth Mate defaults to 115200bps
+  /*
   bluetooth.print("$");  // Print three times individually
   bluetooth.print("$");
   bluetooth.print("$");  // Enter command mode
@@ -27,18 +30,25 @@ void setup() {
   bluetooth.println("U,9600,N");  // Temporarily Change the baudrate to 9600, no parity
   // 115200 can be too fast at times for NewSoftSerial to relay the data reliably
   bluetooth.begin(9600);  // Start bluetooth serial at 9600
+  */
 }
 
 void loop() {
-  if(bluetooth.available())  // If the bluetooth sent any characters
+  //if(bluetooth.available())  // If the bluetooth sent any characters
+  if(Serial3.available())  // If the bluetooth sent any characters
   {
     // Send any characters the bluetooth prints to the serial monitor
-    Serial.print((char)bluetooth.read());  
+    //Serial.print((char)bluetooth.read());  
+    Serial.print((char)Serial3.read());  
   }
 
   if(Serial.available())  // If stuff was typed in the serial monitor
   {
     // Send any characters the Serial monitor prints to the bluetooth
-    bluetooth.print((char)Serial.read());
+    //bluetooth.print((char)Serial.read());
+    Serial3.print((char)Serial.read());
+    //bluetooth.println("0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0");
   }
+  Serial3.println("0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0");
+  //delay(100);
 }

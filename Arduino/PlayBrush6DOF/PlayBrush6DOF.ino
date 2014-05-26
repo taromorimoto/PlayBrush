@@ -6,7 +6,7 @@
 #include <Wire.h>
 #include <SensorDataFilter.h>
 
-#include "CommunicationUtils.h"
+//#include "CommunicationUtils.h"
 
 float angles[3]; // yaw pitch roll
 float q[4]; //hold q values
@@ -22,9 +22,18 @@ SensorDataFilter* d2 = new SensorDataFilter(5);
 // Set the FreeSixIMU object
 FreeSixIMU sixDOF = FreeSixIMU();
 
+//#define DEBUG
+#define BLUETOOTH
+
 void setup() { 
+  #ifdef DEBUG
   Serial.begin(115200);
-  //Serial.begin(9600);
+  #endif
+  
+  #ifdef BLUETOOTH
+  Serial3.begin(115200);  // The Bluetooth Mate defaults to 115200bps
+  #endif
+
   Wire.begin();
   
   delay(5);
@@ -61,7 +70,25 @@ void loop() {
   */
   
   sixDOF.getQ(q);
-  //serialPrintFloatArr(q, 4);
+
+  #ifdef BLUETOOTH  
+  Serial3.print(q[0], 6);
+  Serial3.print("|");
+  Serial3.print(q[1], 6);
+  Serial3.print("|");
+  Serial3.print(q[2], 6);
+  Serial3.print("|");
+  Serial3.print(q[3], 6);
+  Serial3.print("|");
+
+  checkBrushing();
+  Serial3.print(brushing);
+  Serial3.print("|");
+  Serial3.print(brushingAcc);
+  Serial3.print("|");
+
+  Serial3.println(""); //line break
+  #else
   Serial.print(q[0], 6);
   Serial.print("|");
   Serial.print(q[1], 6);
@@ -78,6 +105,7 @@ void loop() {
   Serial.print("|");
 
   Serial.println(""); //line break
+  #endif
 
   delay(60); 
 }

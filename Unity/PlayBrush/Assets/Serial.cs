@@ -20,8 +20,8 @@ public class Serial : MonoBehaviour {
 	public static string message;
 
 	//SerialPort sp = new SerialPort("/dev/tty.usbmodem1411", 115200);
-	SerialPort sp = new SerialPort("/dev/tty.usbmodem33421", 115200);
-	//SerialPort sp = new SerialPort("/dev/tty.PlayBrush-SPP", 115200);
+	//SerialPort sp = new SerialPort("/dev/tty.usbmodem33421", 115200);
+	SerialPort sp = new SerialPort("/dev/tty.PlayBrush-SPP", 115200);
 
 	void Start () {
 		brushingStrengthValues = new float[5];
